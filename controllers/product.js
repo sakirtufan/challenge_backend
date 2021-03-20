@@ -13,7 +13,6 @@ export const getProducts = async (req, res) => {
 
 export const createProduct = async (req, res) => { 
   const newProduct = new Product(req.body);
-  console.log(newProduct);
   try {
     await newProduct.save();
     res.status(201).json(newProduct);
