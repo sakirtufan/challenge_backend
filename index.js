@@ -18,23 +18,24 @@ app.use(cors());
 
 app.get("/", (req, res) => {
   res.json({
-    author: "sakir tufan",
-    message: "Codding Challenge...",
+    author: "Sakir Tufan",
+    message: "Codding Challenge Backend...",
   });
 });
 
 app.use("/products", productRoutes);
 
-const PORT = process.env.PORT || 8000;
 
 mongoose
-  .connect(process.env.CONNECTION_URL || "mongodb://localhost/coddingChannel", {
+  .connect(process.env.CONNECTION_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify:false,
   })
   .then(() => {
-    app.listen(PORT, () => console.log(`Server running on port: ${PORT} `));
+    app.listen(process.env.PORT, () =>
+      console.log(`Server running on port: ${process.env.PORT} `)
+    );
   })
   .catch((err) => {
     console.error(err.message);
